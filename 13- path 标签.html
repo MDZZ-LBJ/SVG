@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<!--
+
+path 路径
+
+ d 属性 接受10个相关命令
+       M 起始坐标点
+       L 后续坐标点
+       H 水平绘制
+       V  垂直绘制
+       Z 自动闭合图形
+       A 绘制曲线 弧形
+
+       下面这几个命令用于绘制赛尔曲线
+       C
+       S
+       Q
+       T
+
+
+命令也可以大小写
+  大写表示坐标点
+  小写表示长度
+
+-->
+
+<div style="width: 800px;height: 800px;border: 1px solid black">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+
+<!--
+
+   M50 50L200 200
+   M50 50表示第一个点坐标为50 50
+   L200 200表示第二个点坐标为200 200
+   L140 140表示第二个点坐标为140 140
+       可以用空格隔开 也可以用逗号隔开
+
+-->
+
+<!--
+
+         <path d="M50 100L200 200L140 140" fill="none" stroke="red" stroke-width="3"></path>
+
+         没效果 因为再写一个M时表示要从这个点开始再绘制路径
+        <path d="M50 100L200 200L140 140M270 270" fill="none" stroke="red" stroke-width="3"></path>
+
+         继续添加L就可以了 两个图形之间没有关系 只不过是通过同一个path标签创建出来的
+        <path d="M50 100L200 200L140 140M270 270L300 300" fill="none" stroke="red" stroke-width="3"></path>
+
+         Z的位置表示前面的图像闭合
+        <path d="M50 100L200 200L140 140ZM320 20L370 100" fill="none" stroke="red" stroke-width="3"></path>
+
+         H 画水平线 100表示水平终点的位置 只用写一个数字 因为是水平线 不能画倾斜的线 写多了也没用
+        <path d="M50 300H100 " fill="none" stroke="red" stroke-width="3"></path>
+
+          V画垂直线 同H原理一样
+        <path d="M10 200V100 " fill="none" stroke="red" stroke-width="3"></path>
+          也可以为负数 向上绘制
+        <path d="M10 200V-70 " fill="none" stroke="red" stroke-width="3"></path>
+
+         H V 结合使用
+        <path d="M30 500H140V30 " fill="none" stroke="red" stroke-width="3"></path>
+
+-->
+        <path d="M50 100H200 " fill="none" stroke="red" stroke-width="3"></path>
+
+        <path d="M50 150h200 " fill="none" stroke="red" stroke-width="3"></path>
+
+
+    </svg>
+
+</div>
+
+
+
+
+
+</body>
+</html>

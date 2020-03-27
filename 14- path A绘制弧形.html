@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<!--
+
+path A 命令:
+
+        X 半径
+        Y 半径
+        角度
+        弧长 0 小弧 1 大弧
+        方向 0 逆时针 1 顺时针
+        终点X坐标
+        终点Y坐标
+
+
+
+
+-->
+
+<div style="width: 800px;height: 800px;border: 1px solid black">
+
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+
+
+
+
+       <!--
+
+       两个点会产生4个弧，因为两个点会在一个圆上，会将圆分为一个大弧
+       一个小弧，这个圆的对称位置同样也会产生两个弧 一个大弧 一个小弧
+
+          M100 100 表示起点坐标
+
+          A 后面数字的意义：
+            100 100 表示 半径
+            0 表示角度
+            0 表示取小的弧
+            0 表示逆时针的弧
+            200 200 表示终坐标
+       -->
+
+
+        <!--
+
+     <path d="M100 100A100 100 0 0 0 200 200 " fill="none" stroke="red" stroke-width="3"></path>
+
+        <path d="M100 100A100 100 0 1 0 200 200 " fill="none" stroke="red" stroke-width="3"></path>
+
+        <path d="M100 100A100 100 0 1 1 200 200 " fill="none" stroke="red" stroke-width="3"></path>
+
+        <path d="M100 100A100 100 0 0 1 200 200 " fill="none" stroke="red" stroke-width="3"></path>
+
+        由于半径100 100 为圆形 无论圆怎么转动 弧的形状不会变
+        将半径改为不同 变成椭圆 子啊改变角度 就能看到效果了
+        <path d="M100 100A150 100 20 1 1 200 200 " fill="none" stroke="red" stroke-width="3"></path>
+-->
+
+
+    </svg>
+
+</div>
+
+
+
+
+
+</body>
+</html>

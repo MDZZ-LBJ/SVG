@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="div1" style="width: 780px; height: 400px ; border: 1px solid black" >
+
+    <svg id="svg1" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+
+
+    </svg>
+
+</div>
+
+<script>
+
+    window.onload=function () {
+        var svgNS='http://www.w3.org/2000/svg'
+        var oParent=document.getElementById('div1')
+        var oSvg=document.getElementById('svg1')
+
+        // 封装创建标签函数（标签名，属性）
+        function createTag(tag,objAttr) {
+            var oTag=document.createElementNS(svgNS,tag)
+            for(var attr in objAttr){
+                oTag.setAttribute(attr,objAttr[attr])
+            }
+            return oTag
+        }
+
+        var oPolyline=null
+        var pointsNum=''
+
+        // 鼠标按下
+        oSvg.onmousedown=function (e) {
+
+/*
+             不加这个右键停止绘画时 再点击不能接着画 因为将oSvg.onmousemove=null
+              要重新添加事件
+
+           if(!oSvg.onmousemove) {
+               oSvg.onmousemove=function (e) {
+                   var e= e || window.event
+                   if(oPolyline){
+                       var x=e.clientX - oParent.offsetLeft
+                       var y=e.clientY - oParent.offsetTop
+                       oPolyline.setAttribute('points',pointsNum+','+x+','+y)
+                   }
+               }
+
+           }
+*/
+
+            // 如果之前创建过线 就接这条线的终点画
+            if(!oPolyline){
+                oPolyline=createTag('polyline',{'fill':"none", 'stroke':"black", 'stroke-width':"2"})
+                oSvg.appendChild(oPolyline)
+            }
+
+            var e= e || window.event
+
+            // 鼠标按下的坐标点
+            var x=e.clientX - oParent.offsetLeft
+            var y=e.clientY - oParent.offsetTop
+
+            if(pointsNum==''){ // 第一个点前面没有逗号
+                pointsNum=x+','+y
+            }else {         //之后每一个点用逗号隔开
+                pointsNum+=','+x+','+y
+            }
+
+            oPolyline.setAttribute('points',pointsNum)
+
+            // 按下鼠标时候 添加一个圆
+            var oCircle=createTag('circle',{'cx':x,'cy':y,'r':5,'fill':'white','stroke':'red','stroke-width':"1"})
+            oSvg.appendChild(oCircle)
+        }
+
+
+        // 鼠标按下滑动
+        oSvg.onmousemove=function (e) {
+            var e= e || window.event
+            if(oPolyline){
+                var x=e.clientX - oParent.offsetLeft
+                var y=e.clientY - oParent.offsetTop
+                oPolyline.setAttribute('points',pointsNum+','+x+','+y)
+            }
+        }
+
+        // 鼠标右击 停止绘画
+        oSvg.oncontextmenu=function () {
+            oSvg.onmousemove=null
+            return false // 阻止右键显示默认菜单
+        }
+
+    }
+
+</script>
+
+
+
+
+</body>
+</html>
